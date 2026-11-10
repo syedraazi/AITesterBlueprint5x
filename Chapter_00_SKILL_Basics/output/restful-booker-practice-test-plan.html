@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Practice test plan for the Restful Booker API, based on the workspace test plan creator skill.">
+  <title>Practice Test Plan | Restful Booker API</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #172b4d;
+      --muted: #526579;
+      --brand: #145da0;
+      --brand-dark: #123b62;
+      --pale: #eef5fb;
+      --line: #d8e1ea;
+      --paper: #fff;
+      --canvas: #f3f6f9;
+      --note: #fff7df;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--canvas);
+      color: var(--ink);
+      font: 16px/1.58 "Segoe UI", Arial, sans-serif;
+    }
+
+    .document {
+      width: min(100% - 32px, 1000px);
+      margin: 32px auto;
+      padding: 56px 68px;
+      background: var(--paper);
+      box-shadow: 0 10px 36px rgb(23 43 77 / 10%);
+    }
+
+    .cover {
+      min-height: 410px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border-bottom: 4px solid var(--brand);
+      margin-bottom: 36px;
+    }
+
+    .eyebrow {
+      margin: 0 0 12px;
+      color: var(--brand);
+      font-size: .82rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      max-width: 700px;
+      margin: 0;
+      color: var(--brand-dark);
+      font-size: clamp(2.3rem, 6vw, 3.8rem);
+      line-height: 1.08;
+    }
+
+    .subtitle {
+      max-width: 680px;
+      margin: 20px 0 28px;
+      color: var(--muted);
+      font-size: 1.2rem;
+    }
+
+    .metadata {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      max-width: 700px;
+      gap: 12px 28px;
+      margin: 0;
+    }
+
+    .metadata div { border-top: 1px solid var(--line); padding-top: 8px; }
+    .metadata dt { color: var(--muted); font-size: .82rem; font-weight: 700; }
+    .metadata dd { margin: 2px 0 0; }
+
+    nav {
+      padding: 20px 24px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfcfe;
+      margin-bottom: 38px;
+    }
+
+    nav h2 { margin-top: 0; font-size: 1.15rem; }
+    nav ol { columns: 2; column-gap: 36px; margin-bottom: 0; padding-left: 22px; }
+    nav li { break-inside: avoid; margin: 5px 0; }
+    a { color: var(--brand); }
+
+    section { margin: 36px 0; scroll-margin-top: 20px; }
+    h2 {
+      padding-bottom: 9px;
+      border-bottom: 2px solid var(--line);
+      color: var(--brand-dark);
+      font-size: 1.55rem;
+      line-height: 1.25;
+    }
+    h3 { margin: 24px 0 8px; color: var(--brand); font-size: 1.12rem; }
+    p { margin: 10px 0; }
+    li { margin: 5px 0; }
+    .callout {
+      padding: 14px 18px;
+      border-left: 4px solid #d59b16;
+      border-radius: 4px;
+      background: var(--note);
+    }
+    .callout strong { color: #5e470f; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 14px 0 22px;
+      font-size: .94rem;
+    }
+    th, td {
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+    th { background: var(--pale); color: var(--brand-dark); }
+    caption {
+      padding: 0 0 8px;
+      color: var(--muted);
+      font-weight: 600;
+      text-align: left;
+    }
+    .small { color: var(--muted); font-size: .9rem; }
+    .footer {
+      margin-top: 48px;
+      padding-top: 16px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: .86rem;
+    }
+
+    @media (max-width: 680px) {
+      .document { width: 100%; margin: 0; padding: 28px 22px; }
+      .cover { min-height: 340px; }
+      nav ol { columns: 1; }
+      .metadata { grid-template-columns: 1fr; }
+      table { font-size: .86rem; }
+      th, td { padding: 8px; }
+    }
+
+    @media print {
+      @page { size: A4; margin: 17mm 16mm; }
+      body { background: #fff; font-size: 10.5pt; }
+      .document { width: auto; margin: 0; padding: 0; box-shadow: none; }
+      .cover { min-height: 245mm; break-after: page; }
+      nav { break-after: page; }
+      h2, h3 { break-after: avoid; }
+      table, .callout { break-inside: avoid; }
+      a { color: inherit; text-decoration: none; }
+      section { margin: 24px 0; }
+    }
+  </style>
+</head>
+<body>
+  <main class="document">
+    <header class="cover">
+      <p class="eyebrow">Quality Assurance · Practice Document</p>
+      <h1>Test Plan</h1>
+      <p class="subtitle">Restful Booker API</p>
+      <dl class="metadata">
+        <div><dt>Document purpose</dt><dd>Practice example</dd></div>
+        <div><dt>Plan status</dt><dd>Draft — not approved for project execution</dd></div>
+        <div><dt>Prepared</dt><dd>November 7, 2026</dd></div>
+        <div><dt>Reference</dt><dd>Workspace test plan creator skill</dd></div>
+      </dl>
+    </header>
+
+    <p class="callout"><strong>Practice-only notice:</strong> This plan is based on the Restful Booker example and template content in the workspace skill. It is not based on a separately supplied PRD. Confirm requirements, environment readiness, dates, roles, and acceptance thresholds with project stakeholders before execution.</p>
+
+    <nav aria-label="Table of contents">
+      <h2>Contents</h2>
+      <ol>
+        <li><a href="#objective">Objective</a></li>
+        <li><a href="#scope">Scope</a></li>
+        <li><a href="#inclusions">Inclusions</a></li>
+        <li><a href="#environments">Test Environments</a></li>
+        <li><a href="#defects">Defect Reporting Procedure</a></li>
+        <li><a href="#strategy">Test Strategy</a></li>
+        <li><a href="#schedule">Test Schedule</a></li>
+        <li><a href="#deliverables">Test Deliverables</a></li>
+        <li><a href="#criteria">Entry and Exit Criteria</a></li>
+        <li><a href="#execution">Test Execution</a></li>
+        <li><a href="#closure">Test Closure</a></li>
+        <li><a href="#tools">Tools</a></li>
+        <li><a href="#risks">Risks and Mitigations</a></li>
+        <li><a href="#approvals">Approvals</a></li>
+      </ol>
+    </nav>
+
+    <section id="objective">
+      <h2>1. Objective</h2>
+      <p>The objective is to assess the quality, functionality, and reliability of the Restful Booker API at <a href="https://restful-booker.herokuapp.com">https://restful-booker.herokuapp.com</a>, focusing on booking create, read, update, and delete (CRUD) flows, input validation, authentication, and API responses.</p>
+      <p>Testing will also consider response behavior, error handling, data consistency, and the API documentation. Experiment impact metrics and guardrail metrics are not defined in the supplied information and must be agreed before any experiment-related testing.</p>
+    </section>
+
+    <section id="scope">
+      <h2>2. Scope</h2>
+      <h3>In scope</h3>
+      <ul>
+        <li>Functional and CRUD testing of documented booking operations.</li>
+        <li>Input and response data validation, including invalid, missing, and boundary values.</li>
+        <li>Authentication and authorization checks for protected operations.</li>
+        <li>Error handling, integration/data consistency, regression, and exploratory testing.</li>
+        <li>Performance and load behavior, concurrency, rate limiting, and security checks at a test-plan level.</li>
+        <li>API documentation review and CI/CD behavior where the relevant pipeline is available.</li>
+      </ul>
+      <h3>Out of scope / not specified</h3>
+      <ul>
+        <li>Unspecified third-party services, product features, service-level objectives, and compliance requirements.</li>
+        <li>Production data changes or destructive testing outside an authorized test environment.</li>
+        <li>Specific performance thresholds, load volumes, supported API versions, and detailed test data; these require stakeholder agreement.</li>
+      </ul>
+    </section>
+
+    <section id="inclusions">
+      <h2>3. Inclusions</h2>
+      <table>
+        <caption>Planned coverage areas</caption>
+        <thead><tr><th>Area</th><th>Coverage</th></tr></thead>
+        <tbody>
+          <tr><td>Create (POST)</td><td>Create bookings with valid data; check invalid or missing fields and verify the created booking can be retrieved.</td></tr>
+          <tr><td>Read (GET)</td><td>Retrieve booking information using documented criteria; verify returned data and handling of invalid or nonexistent identifiers.</td></tr>
+          <tr><td>Update (PUT)</td><td>Update existing bookings with valid data; check invalid updates and confirm persisted values.</td></tr>
+          <tr><td>Delete (DELETE)</td><td>Delete a booking using a valid identifier; verify the response and subsequent state.</td></tr>
+          <tr><td>Data and boundaries</td><td>Check required fields, types, invalid characters, and minimum/maximum or near-boundary values where rules are documented.</td></tr>
+          <tr><td>Authentication and access</td><td>Check CRUD behavior for authenticated and unauthenticated users and verify authorization restrictions described by the API.</td></tr>
+          <tr><td>Reliability and security</td><td>Check malformed requests, sensitive-data exposure, secure transport, concurrency, rate limiting, and graceful error behavior.</td></tr>
+          <tr><td>Quality attributes</td><td>Assess response time, throughput, scalability, compatibility, documentation accuracy, and regression behavior. Thresholds require agreement.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="environments">
+      <h2>4. Test Environments</h2>
+      <table>
+        <caption>Environments and platforms recorded in the supplied template</caption>
+        <thead><tr><th>Environment</th><th>URL</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>QA</td><td><a href="https://restful-booker.herokuapp.com/apidoc/index.html">API documentation</a></td><td>Environment endpoint details are not separately specified.</td></tr>
+          <tr><td>Pre-Prod</td><td><a href="https://restful-booker.herokuapp.com/apidoc/index.html">API documentation</a></td><td>The supplied template lists the same URL for QA and Pre-Prod; confirm whether these are distinct environments.</td></tr>
+        </tbody>
+      </table>
+      <p><strong>Platforms listed:</strong> Windows 10 with Chrome, Firefox, and Edge; macOS with Safari; Android with Chrome; iPhone with Safari.</p>
+      <p class="small">Confirm actual OS/browser versions, device coverage, network conditions, test credentials, permissions, and environment-specific base URLs before execution.</p>
+    </section>
+
+    <section id="defects">
+      <h2>5. Defect Reporting Procedure</h2>
+      <ol>
+        <li>Record each observed deviation from documented requirements or expected behavior in JIRA.</li>
+        <li>Include a concise title, environment, preconditions, reproducible steps, expected and actual results, severity/priority, and relevant evidence or logs.</li>
+        <li>Triage defects with the appropriate project stakeholders; track ownership, status, and retest outcome in JIRA.</li>
+        <li>Share a daily end-of-day defect status with development management, as described in the supplied template.</li>
+      </ol>
+      <table>
+        <caption>Contacts/ownership stated in the supplied template</caption>
+        <thead><tr><th>Area</th><th>Named contact</th></tr></thead>
+        <tbody>
+          <tr><td>Frontend</td><td>Devesh</td></tr>
+          <tr><td>Backend</td><td>Sonal</td></tr>
+          <tr><td>DevOps</td><td>Prajeeth</td></tr>
+          <tr><td>POC</td><td>Not specified</td></tr>
+        </tbody>
+      </table>
+      <p class="small">Confirm that these contacts and the defect triage workflow are current before use.</p>
+    </section>
+
+    <section id="strategy">
+      <h2>6. Test Strategy</h2>
+      <ol>
+        <li><strong>Design:</strong> Derive scenarios and test cases from confirmed requirements and API documentation. Apply equivalence partitioning, boundary value analysis, decision tables, state transition testing, use-case testing, and error guessing.</li>
+        <li><strong>Prioritize:</strong> Prioritize cases by business and technical risk once impact and severity criteria are agreed.</li>
+        <li><strong>Smoke and sanity:</strong> Run smoke checks on a candidate build. If critical smoke checks fail, report the failure and request a stable build before in-depth execution.</li>
+        <li><strong>Execution:</strong> Run functional, validation, integration, authentication, regression, compatibility, and exploratory checks across confirmed supported environments.</li>
+        <li><strong>Quality attributes:</strong> Conduct performance, load, concurrency, and rate-limit checks only with approved limits, a suitable environment, and agreed thresholds.</li>
+        <li><strong>Defects and retesting:</strong> Log defects in JIRA, retest fixes, and repeat relevant regression coverage until agreed exit criteria are met.</li>
+      </ol>
+      <p>Apply context-driven, shift-left, exploratory, and end-to-end testing practices. Multiple testers may execute across supported environments in parallel when access and test data permit.</p>
+    </section>
+
+    <section id="schedule">
+      <h2>7. Test Schedule</h2>
+      <p>The supplied template indicates a two-sprint testing window. Calendar dates and task durations were not provided.</p>
+      <table>
+        <thead><tr><th>Task</th><th>Timing</th></tr></thead>
+        <tbody>
+          <tr><td>Test plan preparation and approval</td><td>Date to be confirmed</td></tr>
+          <tr><td>Test scenario and test case creation</td><td>Date/duration to be confirmed</td></tr>
+          <tr><td>Test execution, defect retesting, and regression</td><td>Within the planned two sprints; detailed dates to be confirmed</td></tr>
+          <tr><td>Summary report submission</td><td>Date to be confirmed</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="deliverables">
+      <h2>8. Test Deliverables</h2>
+      <ul>
+        <li>Approved test plan.</li>
+        <li>Test scenarios and prioritized test cases.</li>
+        <li>Execution results and test case reports.</li>
+        <li>JIRA defect records and defect status reports.</li>
+        <li>Test summary report and closure notes.</li>
+        <li>Supporting evidence, such as screenshots or logs, where appropriate.</li>
+      </ul>
+    </section>
+
+    <section id="criteria">
+      <h2>9. Entry and Exit Criteria</h2>
+      <table>
+        <thead><tr><th>Phase</th><th>Entry criteria</th><th>Exit criteria</th></tr></thead>
+        <tbody>
+          <tr><td>Requirement analysis</td><td>Testing team receives the requirements or project details.</td><td>Requirements are explored and understood; open questions are clarified or recorded.</td></tr>
+          <tr><td>Test execution</td><td>Test scenarios/cases are signed off by the client; application is available for testing; access and test data are ready.</td><td>Planned execution is recorded; test case and defect reports are available; unresolved risks are communicated.</td></tr>
+          <tr><td>Test closure</td><td>Test case and defect reports are ready.</td><td>Test summary report is prepared and shared; closure status and outstanding items are documented.</td></tr>
+        </tbody>
+      </table>
+      <p class="small">Quantitative exit thresholds (for example, pass rate, open-defect limits, or response-time targets) were not supplied and must be agreed before execution.</p>
+    </section>
+
+    <section id="execution">
+      <h2>10. Test Execution</h2>
+      <ul>
+        <li>Verify the target environment, build, credentials, permissions, and test data before starting.</li>
+        <li>Run and record smoke tests; communicate blockers before proceeding to detailed testing.</li>
+        <li>Execute prioritized cases and exploratory checks; capture actual results and evidence.</li>
+        <li>Log failures in JIRA, retest fixes, and run related regression checks.</li>
+        <li>Summarize progress, defects, blockers, and risks to stakeholders on the agreed cadence.</li>
+      </ul>
+    </section>
+
+    <section id="closure">
+      <h2>11. Test Closure</h2>
+      <p>At the end of the test cycle, consolidate execution results, defect status, outstanding risks, coverage, and any deviations from the plan in a test summary report. Obtain stakeholder review and record the agreed closure or follow-up actions.</p>
+    </section>
+
+    <section id="tools">
+      <h2>12. Tools</h2>
+      <ul>
+        <li>JIRA — defect tracking.</li>
+        <li>Mind map tool — test analysis and scenario organization.</li>
+        <li>Screenshot capture tool — evidence collection.</li>
+        <li>Word and Excel documents — planning, cases, and reports.</li>
+      </ul>
+    </section>
+
+    <section id="risks">
+      <h2>13. Risks and Mitigations</h2>
+      <table>
+        <thead><tr><th>Risk</th><th>Mitigation stated in the template</th></tr></thead>
+        <tbody>
+          <tr><td>Resource unavailable</td><td>Plan a backup resource.</td></tr>
+          <tr><td>Build URL unavailable</td><td>Use the time for other testing tasks while access is restored.</td></tr>
+          <tr><td>Insufficient testing time</td><td>Scale resources dynamically based on client needs.</td></tr>
+        </tbody>
+      </table>
+      <p>Environment access, unclear requirements, unspecified test thresholds, and shared test data may also affect execution; owners and mitigations should be agreed during project planning.</p>
+    </section>
+
+    <section id="approvals">
+      <h2>14. Approvals</h2>
+      <p>The supplied process calls for client approval of the test plan, test scenarios, test cases, and reports before proceeding to subsequent steps.</p>
+      <table>
+        <thead><tr><th>Document</th><th>Approver</th><th>Status / date</th></tr></thead>
+        <tbody>
+          <tr><td>Test plan</td><td>Client/stakeholder — name not supplied</td><td>Pending</td></tr>
+          <tr><td>Test scenarios and cases</td><td>Client/stakeholder — name not supplied</td><td>Pending</td></tr>
+          <tr><td>Test reports</td><td>Client/stakeholder — name not supplied</td><td>Pending</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <footer class="footer">
+      Practice document generated from the workspace test plan creator skill. Confirm all project-specific details before treating this plan as an execution baseline.
+    </footer>
+  </main>
+</body>
+</html>
