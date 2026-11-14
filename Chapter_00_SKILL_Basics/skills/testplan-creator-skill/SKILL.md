@@ -1,6 +1,6 @@
 ---
 name: "test plan creator"
-description: "Based on my template, which I am going to give him, it is going to create a test plan according to my company. VWO.com"
+description: "Based on my template, which I am going to give him, it is going to create a test plan according to my company VWO.com"
 version: "1.0.0"
 author: "syedraazi"
 license: "MIT"
@@ -10,7 +10,7 @@ tags:
 ---
 
 # Test Plan Creator
-You task is to create a test plan based on  the knowledge shared by the user, make sure you use proper template that we have mentioned in the below comments.
+You task is to create a good Test Plan based on  the knowledge shared by the user, make sure you use proper "Template Test Plan" as an "example only" which is mentioned in the below comments under "Example" to create a Test Plan for the PRD shared in the chat window.
 
 ## Core Principles
 
@@ -477,4 +477,4 @@ Testing will only continue to the next steps once these approvals are done
 	
 
 ## Output:
-- Should be in PDF format
+- Should be in PDF format 
