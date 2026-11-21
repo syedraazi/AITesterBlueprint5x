@@ -1,0 +1,120 @@
+:root {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #111;
+  background: #fff;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-width: 320px;
+}
+
+.shell {
+  width: min(960px, calc(100% - 32px));
+  min-height: 640px;
+  margin: 16px auto;
+  padding: 28px 80px 16px;
+  border: 6px solid #111;
+  border-radius: 70px;
+  text-align: center;
+  position: relative;
+}
+
+h1 {
+  margin: 0 0 24px;
+  font-size: 22px;
+}
+
+.preview {
+  height: 420px;
+  overflow: auto;
+  border: 5px solid #111;
+  border-radius: 80px;
+  background: #fff;
+  text-align: left;
+  padding: 24px;
+}
+
+.preview pre {
+  white-space: pre-wrap;
+  margin: 0;
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.placeholder, .state {
+  text-align: center;
+  color: #777;
+  margin-top: 170px;
+}
+
+.error { color: #b00020; text-align: center; }
+
+.submit-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin: 28px auto 12px;
+  border: 4px solid #111;
+  border-radius: 16px;
+  padding: 10px;
+  max-width: 560px;
+  font-weight: bold;
+}
+
+.submit-row input {
+  width: 180px;
+  height: 38px;
+  border: 3px solid #111;
+  border-radius: 4px;
+  padding: 6px 8px;
+  font-size: 16px;
+}
+
+button {
+  min-height: 38px;
+  border: 3px solid #111;
+  border-radius: 4px;
+  background: #fff;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:disabled { opacity: 0.6; cursor: wait; }
+
+.setting-button {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 220px;
+}
+
+.settings-card {
+  width: 86%;
+  min-height: 170px;
+  margin: 0 auto 16px;
+  border: 5px solid #111;
+  border-radius: 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 18px;
+}
+
+.settings-card h2 { margin: 0; font-size: 18px; }
+.settings-card p { margin: 0; font-size: 14px; }
+
+@media (max-width: 650px) {
+  .shell { padding: 24px 18px 70px; border-radius: 36px; }
+  .preview { height: 380px; border-radius: 40px; }
+  .submit-row { flex-wrap: wrap; }
+  .submit-row input { width: 150px; }
+  .settings-card { border-radius: 35px; }
+}
