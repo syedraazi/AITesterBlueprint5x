@@ -1,4 +1,3 @@
-import crypto from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -28,7 +27,6 @@ const app = express();
 const port = Number(process.env.PORT || 3002);
 const frontendOrigin = process.env.FRONTEND_ORIGIN || "http://localhost:5174";
 const issueKeyPattern = /^[A-Z][A-Z0-9]+-\d+$/;
-const downloadFiles = new Map();
 const maxAttachmentBytes = 1024 * 1024;
 const allowedTextAttachment = /\.(txt|md|csv)$/i;
 
@@ -288,10 +286,6 @@ async function generateForChunk(model, ticket, requirements) {
   throw safeError(502, `Groq returned invalid test case data after one repair attempt: ${lastError}`);
 }
 
-function createFileId() {
-  return crypto.randomUUID();
-}
-
 app.get("/api/health", (_request, response) => response.json({ status: "ok" }));
 
 app.get("/api/jira/:key", async (request, response) => {
@@ -362,27 +356,16 @@ app.post("/api/test-cases/export", async (request, response) => {
   try {
     const warnings = [...(ticket.warnings || [])];
     const buffer = await createWorkbookBuffer(ticket, validation.data, warnings);
-    const id = createFileId();
     const date = new Date().toISOString().slice(0, 10).replace(/-/g, "");
     const filename = `${ticket.key}-test-cases-${date}.xlsx`;
-    downloadFiles.set(id, { buffer, filename, createdAt: Date.now() });
-    for (const [fileId, item] of downloadFiles) {
-      if (Date.now() - item.createdAt > 30 * 60 * 1000) downloadFiles.delete(fileId);
-    }
-    response.json({ id, filename });
+    response.set({
+      "Content-Type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "Content-Disposition": `attachment; filename="${filename}"`
+    });
+    response.send(buffer);
   } catch (error) {
     handleError(response, error);
   }
-});
-
-app.get("/api/download/:id", (request, response) => {
-  const file = downloadFiles.get(request.params.id);
-  if (!file) return response.status(404).json({ error: "This export has expired. Download the workbook again." });
-  response.set({
-    "Content-Type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-    "Content-Disposition": `attachment; filename="${file.filename}"`
-  });
-  response.send(file.buffer);
 });
 
 if (!fs.existsSync(TEMPLATE_PATH)) {
@@ -398,6 +381,10 @@ if (fs.existsSync(distPath)) {
   });
 }
 
-app.listen(port, "127.0.0.1", () => {
-  console.log(`Test Case Generator listening at http://localhost:${port}`);
-});
+if (!process.env.VERCEL) {
+  app.listen(port, "127.0.0.1", () => {
+    console.log(`Test Case Generator listening at http://localhost:${port}`);
+  });
+}
+
+export default app;

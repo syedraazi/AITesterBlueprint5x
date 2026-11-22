@@ -1,0 +1,25 @@
+{
+  "name": "intelligent-test-planning-agent",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently -k -n workspace,strategy,plan,cases \"vite --host 127.0.0.1 --port 5180 --strictPort\" \"npm --prefix agents/strategy/Implementation run dev\" \"npm --prefix agents/plan/Implementation run dev\" \"npm --prefix agents/cases/Implementation run dev\"",
+    "build": "vite build",
+    "test": "npm --prefix agents/strategy/Implementation test && npm --prefix agents/cases/Implementation test"
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "latest",
+    "concurrently": "latest",
+    "dotenv": "latest",
+    "exceljs": "^4.4.0",
+    "express": "latest",
+    "pdfkit": "latest",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "vite": "latest",
+    "zod": "^4.6.7"
+  },
+  "overrides": {
+    "uuid": "^11.1.1"
+  }
+}

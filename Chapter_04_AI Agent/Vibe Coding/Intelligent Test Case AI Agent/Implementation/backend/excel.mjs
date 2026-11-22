@@ -6,7 +6,7 @@ import { getTemplateMapping, validateTestCaseHeaders } from "../src/core.mjs";
 import { TEST_CASE_HEADERS, EditableTestCasesSchema } from "../src/schemas.mjs";
 
 const implementationDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-export const TEMPLATE_PATH = path.resolve(implementationDir, "../Plan/vwo-login-dashboard-test-cases.xlsx");
+export const TEMPLATE_PATH = path.join(implementationDir, "vwo-login-dashboard-test-cases.xlsx");
 export const TEMPLATE_SHEET_NAMES = ["Read Me", "Test Cases"];
 
 export async function inspectTemplate() {

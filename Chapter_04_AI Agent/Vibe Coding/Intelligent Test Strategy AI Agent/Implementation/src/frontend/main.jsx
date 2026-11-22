@@ -2,6 +2,14 @@ import React, { useEffect, useState } from "react";
 import { createRoot } from "react-dom/client";
 import "./styles.css";
 
+async function readJsonResponse(response) {
+  const contentType = response.headers.get("content-type") || "";
+  if (!contentType.includes("application/json")) {
+    throw new Error(`Request failed (${response.status}): ${response.statusText || "Unexpected server response"}`);
+  }
+  return response.json();
+}
+
 function App() {
   const [screen, setScreen] = useState("strategy");
   const [key, setKey] = useState("");
@@ -19,7 +27,7 @@ function App() {
     setStrategy(null);
     try {
       const ticketResponse = await fetch(`/api/jira/${encodeURIComponent(key.trim().toUpperCase())}`);
-      const ticket = await ticketResponse.json();
+      const ticket = await readJsonResponse(ticketResponse);
       if (!ticketResponse.ok) throw new Error(ticket.error || "Could not retrieve this Jira ticket.");
       setWarning(ticket.warnings?.[0] || "");
       const strategyResponse = await fetch("/api/strategy", {
@@ -27,7 +35,7 @@ function App() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ ticket })
       });
-      const generated = await strategyResponse.json();
+      const generated = await readJsonResponse(strategyResponse);
       if (!strategyResponse.ok) throw new Error(generated.error || "Could not generate the strategy.");
       setStrategy(generated);
     } catch (requestError) {
@@ -48,7 +56,7 @@ function App() {
         body: JSON.stringify({ strategy })
       });
       if (!response.ok) {
-        const data = await response.json();
+        const data = await readJsonResponse(response);
         throw new Error(data.error || "Could not create the PDF.");
       }
       const blob = await response.blob();
@@ -148,7 +156,7 @@ function Connections({ onBack }) {
     let active = true;
     fetch("/api/connections")
       .then(async (response) => {
-        const data = await response.json();
+        const data = await readJsonResponse(response);
         if (!response.ok) throw new Error(data.error || "Could not load connections.");
         if (active) setStatus(data);
       })
@@ -166,7 +174,7 @@ function Connections({ onBack }) {
     setMessages((previous) => ({ ...previous, [service]: "" }));
     try {
       const response = await fetch(`/api/connections/${service}/test`, { method: "POST" });
-      const data = await response.json();
+      const data = await readJsonResponse(response);
       if (!response.ok) throw new Error(data.error || `${service} connection test failed.`);
       setMessages((previous) => ({ ...previous, [service]: data.message }));
     } catch (requestError) {

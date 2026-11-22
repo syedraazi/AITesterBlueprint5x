@@ -1,0 +1,27 @@
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "functions": {
+    "api/[...route].mjs": {
+      "includeFiles": "config/defaults.json"
+    },
+    "api/jira/[key].mjs": {
+      "includeFiles": "config/defaults.json"
+    },
+    "api/strategy.mjs": {
+      "includeFiles": "config/defaults.json"
+    },
+    "api/strategy/pdf.mjs": {
+      "includeFiles": "config/defaults.json"
+    },
+    "api/connections.mjs": {
+      "includeFiles": "config/defaults.json"
+    },
+    "api/connections/[service]/test.mjs": {
+      "includeFiles": "config/defaults.json"
+    },
+    "api/health.mjs": {
+      "includeFiles": "config/defaults.json"
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "functions": {
+    "api/[...route].js": {
+      "includeFiles": "TestPlan_Template.md"
+    },
+    "api/settings/test/jira.js": {
+      "includeFiles": "TestPlan_Template.md"
+    },
+    "api/settings/test/groq.js": {
+      "includeFiles": "TestPlan_Template.md"
+    },
+    "api/generate.js": {
+      "includeFiles": "TestPlan_Template.md"
+    }
+  }
+}

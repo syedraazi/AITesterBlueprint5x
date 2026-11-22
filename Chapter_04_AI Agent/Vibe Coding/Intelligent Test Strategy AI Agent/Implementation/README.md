@@ -1,5 +1,7 @@
 # Jira Test Strategy
 
+[Live- link](https://intelligent-test-strategy-ai-agent.vercel.app)
+
 ## Setup
 
 Requires Node.js 20.19+. Install dependencies and start both services:
@@ -30,3 +32,7 @@ The `.env` file is loaded from this folder. In this workspace only, if it is abs
 - Live Jira generation requires valid credentials and permission to view the issue.
 - Configure and review `config/defaults.json` with the QA team; map a custom acceptance-criteria field if needed.
 - Claude refinement is optional and was not live-verified; rule-based generation works without it.
+
+## Vercel
+
+Deploy this `Implementation/` directory as its own Vercel project. Add the needed `.env` values as Vercel project environment variables; `.env` files are excluded from deployment.

@@ -2,6 +2,14 @@ import React, { useState } from "react";
 import { createRoot } from "react-dom/client";
 import "./styles.css";
 
+async function readJsonResponse(response) {
+  const contentType = response.headers.get("content-type") || "";
+  if (!contentType.includes("application/json")) {
+    throw new Error(`Request failed (${response.status}): ${response.statusText || "Unexpected server response"}`);
+  }
+  return response.json();
+}
+
 function App() {
   const [page, setPage] = useState("main");
   const [issueId, setIssueId] = useState("");
@@ -21,7 +29,7 @@ function App() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ issueId })
       });
-      const data = await response.json();
+      const data = await readJsonResponse(response);
       if (!response.ok) throw new Error(data.error || "Unable to generate test plan.");
       setPlan(data.plan);
     } catch (error) {
@@ -75,7 +83,7 @@ function Settings() {
     setResults((previous) => ({ ...previous, [service]: "" }));
     try {
       const response = await fetch(`/api/settings/test/${service}`);
-      const data = await response.json();
+      const data = await readJsonResponse(response);
       setResults((previous) => ({
         ...previous,
         [service]: response.ok ? data.message : `Error: ${data.error}`

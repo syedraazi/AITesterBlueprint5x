@@ -138,7 +138,7 @@ async function generateWithGroq(issue) {
   const key = process.env.GROQ_API_KEY;
   if (!key) return deterministicPlan(issue);
   const model = process.env.GROQ_MODEL || "openai/gpt-oss-120b";
-  const template = fs.readFileSync(path.resolve(implementationDir, "../Plan/TestPlan_Template.md"), "utf8");
+  const template = fs.readFileSync(path.join(implementationDir, "TestPlan_Template.md"), "utf8");
   const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
     method: "POST",
     headers: {
@@ -212,6 +212,10 @@ if (fs.existsSync(distDir)) {
 }
 
 const port = Number(process.env.PORT || 3000);
-app.listen(port, "0.0.0.0", () => {
-  console.log(`Server running at http://localhost:${port}`);
-});
+if (require.main === module) {
+  app.listen(port, "0.0.0.0", () => {
+    console.log(`Server running at http://localhost:${port}`);
+  });
+}
+
+module.exports = app;

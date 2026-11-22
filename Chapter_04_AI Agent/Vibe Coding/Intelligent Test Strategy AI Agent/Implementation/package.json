@@ -7,7 +7,7 @@
     "dev:backend": "node src/backend/server.mjs",
     "dev:frontend": "vite --host 0.0.0.0",
     "build": "vite build",
-    "test": "node --test",
+    "test": "node --test tests/core.test.mjs",
     "sample:pdf": "node src/backend/generate-sample.mjs",
     "start": "node src/backend/server.mjs"
   },

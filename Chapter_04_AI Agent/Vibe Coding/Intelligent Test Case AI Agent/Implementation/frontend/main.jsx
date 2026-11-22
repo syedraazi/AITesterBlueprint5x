@@ -76,17 +76,14 @@ function App() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ ticket, cases })
       });
-      const exported = await exportResponse.json();
-      if (!exportResponse.ok) throw new Error(exported.error || "Could not prepare the workbook.");
-      const fileResponse = await fetch(`/api/download/${encodeURIComponent(exported.id)}`);
-      if (!fileResponse.ok) {
-        const data = await fileResponse.json();
-        throw new Error(data.error || "The workbook download failed.");
+      if (!exportResponse.ok) {
+        const data = await exportResponse.json();
+        throw new Error(data.error || "Could not prepare the workbook.");
       }
-      const url = URL.createObjectURL(await fileResponse.blob());
+      const url = URL.createObjectURL(await exportResponse.blob());
       const anchor = document.createElement("a");
       anchor.href = url;
-      anchor.download = exported.filename;
+      anchor.download = exportResponse.headers.get("content-disposition")?.match(/filename="([^"]+)"/)?.[1] || "test-cases.xlsx";
       anchor.click();
       URL.revokeObjectURL(url);
       setProgress("");

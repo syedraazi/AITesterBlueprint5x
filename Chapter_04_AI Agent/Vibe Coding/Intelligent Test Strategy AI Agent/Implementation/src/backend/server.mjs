@@ -220,8 +220,11 @@ if (fs.existsSync(distPath)) {
   });
 }
 
-app.listen(port, "0.0.0.0", () => {
-  console.log(`Test Strategy app listening on http://localhost:${port}`);
-});
+if (!process.env.VERCEL && process.env.NODE_ENV !== "test") {
+  app.listen(port, "0.0.0.0", () => {
+    console.log(`Test Strategy app listening on http://localhost:${port}`);
+  });
+}
 
 export { adfToText };
+export default app;

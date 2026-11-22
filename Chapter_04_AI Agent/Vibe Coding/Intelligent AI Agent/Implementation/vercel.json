@@ -1,0 +1,9 @@
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "functions": {
+    "api/[...route].mjs": {
+      "includeFiles": "agents/cases/Implementation/vwo-login-dashboard-test-cases.xlsx"
+    }
+  }
+}

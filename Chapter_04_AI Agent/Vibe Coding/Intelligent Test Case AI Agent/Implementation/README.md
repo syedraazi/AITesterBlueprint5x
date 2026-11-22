@@ -1,5 +1,7 @@
 # Jira Test Case Generator
 
+[Live- link](https://intelligent-test-case-ai-agent.vercel.app)
+
 ## Run locally
 
 Requires Node.js 20+. In `Implementation/` run:
@@ -24,3 +26,7 @@ Enter a Jira ticket key, select **Fetch & Generate**, edit the table if needed, 
 ## Verify and limitations
 
 Run `npm test` for ADF, workbook mapping, and schema checks. Jira-linked PRD issues and TXT, MD, or CSV attachments are imported when accessible; other attachment formats are reported as skipped. Cases are drafts; review proposed priorities and assumptions before execution.
+
+## Vercel
+
+Deploy this `Implementation/` directory as its own Vercel project. The API is served by a Vercel Function, and workbook downloads are returned directly so they do not depend on in-memory server state. Add the required `.env` values as Vercel project environment variables; `.env` files are excluded from deployment.

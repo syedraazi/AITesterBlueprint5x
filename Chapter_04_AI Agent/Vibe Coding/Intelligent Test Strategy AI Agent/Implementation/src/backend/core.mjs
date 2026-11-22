@@ -94,6 +94,14 @@ function listOrConfirm(values) {
 }
 
 export function buildStrategy(ticket, defaults, date = new Date().toISOString().slice(0, 10)) {
+  ticket = {
+    ...ticket,
+    linkedIssues: Array.isArray(ticket.linkedIssues) ? ticket.linkedIssues : [],
+    subTasks: Array.isArray(ticket.subTasks) ? ticket.subTasks : [],
+    components: Array.isArray(ticket.components) ? ticket.components : [],
+    fixVersions: Array.isArray(ticket.fixVersions) ? ticket.fixVersions : [],
+    labels: Array.isArray(ticket.labels) ? ticket.labels : []
+  };
   const hasDescription = Boolean(ticket.description?.trim());
   const criteria = ticket.acceptanceCriteria?.trim()
     ? ticket.acceptanceCriteria.split(/\n+/).map((item) => item.replace(/^\s*(?:[-*•]|\d+[.)])\s*/, "").trim()).filter(Boolean)
