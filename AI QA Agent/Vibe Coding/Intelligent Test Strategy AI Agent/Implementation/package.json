@@ -1,0 +1,26 @@
+{
+  "name": "jira-test-strategy",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently -k \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev:backend": "node src/backend/server.mjs",
+    "dev:frontend": "vite --host 0.0.0.0",
+    "build": "vite build",
+    "test": "node --test tests/core.test.mjs",
+    "sample:pdf": "node src/backend/generate-sample.mjs",
+    "start": "node src/backend/server.mjs"
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "latest",
+    "dotenv": "latest",
+    "express": "latest",
+    "pdfkit": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "vite": "latest"
+  },
+  "devDependencies": {
+    "concurrently": "latest"
+  }
+}

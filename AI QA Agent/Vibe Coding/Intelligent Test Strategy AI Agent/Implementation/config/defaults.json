@@ -1,0 +1,70 @@
+{
+  "testApproach": [
+    { "level": "Unit", "applies": "Yes", "who": "Development team", "when": "During development", "notes": "Team default; confirm for this ticket." },
+    { "level": "Functional", "applies": "Yes", "who": "QA", "when": "Each build", "notes": "Requirement-based; confirm scope." },
+    { "level": "Integration / SIT", "applies": "To be confirmed", "who": "QA", "when": "After integration build", "notes": "Confirm relevant integrations." },
+    { "level": "End-to-End", "applies": "To be confirmed", "who": "QA", "when": "Before UAT", "notes": "Confirm user journeys." },
+    { "level": "Regression", "applies": "Yes", "who": "QA", "when": "Each release", "notes": "Risk-based selection." },
+    { "level": "UAT", "applies": "To be confirmed", "who": "Business users", "when": "Before go-live", "notes": "Confirm business participation." },
+    { "level": "API", "applies": "To be confirmed", "who": "QA", "when": "With integration build", "notes": "Confirm API scope." },
+    { "level": "Performance", "applies": "To be confirmed", "who": "To be confirmed", "when": "To be confirmed", "notes": "Set measurable targets before testing." },
+    { "level": "Security", "applies": "To be confirmed", "who": "To be confirmed", "when": "To be confirmed", "notes": "Confirm applicable security requirements." },
+    { "level": "Usability / Accessibility", "applies": "To be confirmed", "who": "QA", "when": "For relevant UI changes", "notes": "Confirm applicable standards." },
+    { "level": "Compatibility", "applies": "To be confirmed", "who": "QA", "when": "To be confirmed", "notes": "Confirm supported platforms." }
+  ],
+  "manualAutomation": "New or changed functionality is reviewed manually first. Automate stable, repeatable checks after the team confirms scope.",
+  "environments": [
+    { "environment": "DEV", "purpose": "Developer checks", "owner": "Development team", "data": "Synthetic or mock data" },
+    { "environment": "QA", "purpose": "QA verification", "owner": "QA team", "data": "Approved test data" },
+    { "environment": "UAT", "purpose": "Business validation", "owner": "Product team", "data": "Approved, non-sensitive data" }
+  ],
+  "environmentEscalation": "Escalation owner and response time: To be confirmed.",
+  "testDataStrategy": "Use approved synthetic or masked data. Data creation, refresh cadence, and ownership: To be confirmed.",
+  "tools": [
+    { "purpose": "Test management", "tool": "To be confirmed" },
+    { "purpose": "Defect tracking", "tool": "Jira (ticket source)" },
+    { "purpose": "Automation", "tool": "To be confirmed" },
+    { "purpose": "API testing", "tool": "To be confirmed" },
+    { "purpose": "CI/CD", "tool": "To be confirmed" },
+    { "purpose": "Reporting", "tool": "To be confirmed" }
+  ],
+  "entryCriteria": [
+    "Requirements and acceptance criteria reviewed.",
+    "Test build and target environment are available.",
+    "Test scenarios and required data are reviewed."
+  ],
+  "exitCriteria": [
+    "Execution and pass thresholds: To be confirmed.",
+    "Severity thresholds for open defects: To be confirmed.",
+    "Required regression and stakeholder sign-off: To be confirmed."
+  ],
+  "defectManagement": {
+    "severity": "Severity definitions: To be confirmed by the project team.",
+    "priority": "Priority definitions: To be confirmed by the project team.",
+    "lifecycle": "Defect lifecycle: To be confirmed.",
+    "triage": "Triage cadence and attendees: To be confirmed.",
+    "tracker": "Jira; project and workflow: To be confirmed."
+  },
+  "roles": [
+    { "role": "QA Lead", "responsibility": "Owns strategy, coordinates testing, and reports quality status." },
+    { "role": "QA Engineer", "responsibility": "Designs and executes tests; records and retests defects." },
+    { "role": "Developer", "responsibility": "Supports testability and resolves defects." },
+    { "role": "Product Owner / BA", "responsibility": "Clarifies requirements and supports acceptance." }
+  ],
+  "risks": [
+    { "risk": "Requirements or acceptance criteria are incomplete or change.", "impact": "To be confirmed", "likelihood": "To be confirmed", "mitigation": "Review changes with the product owner and reassess coverage." },
+    { "risk": "Test environment or data is unavailable.", "impact": "To be confirmed", "likelihood": "To be confirmed", "mitigation": "Confirm readiness and escalation ownership before execution." }
+  ],
+  "reports": ["Test status report", "Defect report", "Test closure report"],
+  "metrics": ["Planned vs. executed tests", "Pass/fail rate", "Open defects by severity", "Requirement coverage"],
+  "reportAudience": "Project team and stakeholders; recipients and cadence: To be confirmed.",
+  "traceability": "Link each confirmed requirement and acceptance criterion to test scenarios and results. Review coverage before execution and sign-off.",
+  "assumptions": [
+    "Requirement changes are communicated to QA.",
+    "The team provides a testable build and release notes."
+  ],
+  "dependencies": [
+    "Required environments, integrations, and data are available for the test window."
+  ],
+  "approvalRoles": ["QA Lead", "Product Owner", "Development Lead"]
+}

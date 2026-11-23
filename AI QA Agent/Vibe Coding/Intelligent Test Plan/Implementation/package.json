@@ -1,0 +1,22 @@
+{
+  "name": "intelligent-test-plan",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently -k \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev:backend": "node src/backend/server.js",
+    "dev:frontend": "vite --host 0.0.0.0",
+    "build": "vite build",
+    "start": "node src/backend/server.js"
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "latest",
+    "dotenv": "latest",
+    "express": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "vite": "latest"
+  },
+  "devDependencies": {
+    "concurrently": "latest"
+  }
+}
