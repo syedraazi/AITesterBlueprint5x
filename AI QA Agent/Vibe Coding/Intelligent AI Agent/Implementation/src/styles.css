@@ -1,0 +1,172 @@
+:root {
+  font-family: "Segoe UI", Arial, sans-serif;
+  color: #17233c;
+  background: #f5f7fb;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  background: #f5f7fb;
+}
+
+button, a { font: inherit; }
+
+.workspace {
+  width: min(1320px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: 22px 0 16px;
+}
+
+.workspace-header {
+  height: 66px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: inherit;
+  text-decoration: none;
+}
+
+.brand-icon {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border-radius: 13px;
+  background: #5946d2;
+  color: white;
+  font-family: "Segoe UI", Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.brand strong, .brand small { display: block; }
+.brand strong { font-family: "Segoe UI", Arial, sans-serif; font-size: 15px; }
+.brand small { margin-top: 2px; color: #78839a; font-size: 12px; }
+
+.settings-button {
+  min-height: 40px;
+  padding: 0 15px;
+  border: 1px solid #dfe4ed;
+  border-radius: 10px;
+  background: #fff;
+  color: #26334c;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.settings-button span { margin-right: 5px; }
+.settings-button:hover, .agent-tab:hover { border-color: #b7adeb; }
+.settings-button:focus-visible, .agent-tab:focus-visible, .brand:focus-visible { outline: 3px solid #aea4f0; outline-offset: 2px; }
+
+.workspace-intro { padding: 28px 0 20px; }
+.eyebrow { margin: 0 0 8px; color: #6656cf; font-size: 11px; font-weight: 700; letter-spacing: .12em; }
+.workspace-intro h1 { margin: 0; font-family: "Segoe UI", Arial, sans-serif; font-size: clamp(26px, 3vw, 36px); letter-spacing: -.04em; }
+.workspace-intro > p:last-child { margin: 8px 0 0; color: #778198; font-size: 14px; }
+
+.shared-ticket {
+  margin: 0 0 18px;
+  padding: 14px 16px;
+  border: 1px solid #e6e9f0;
+  border-radius: 12px;
+  background: #fff;
+}
+
+.shared-ticket-form { display: flex; align-items: center; gap: 10px; }
+.shared-ticket-form label { color: #38455e; font-size: 13px; font-weight: 700; }
+.shared-ticket-form input {
+  width: min(250px, 42vw);
+  height: 40px;
+  padding: 0 11px;
+  border: 1px solid #dfe4ed;
+  border-radius: 8px;
+  color: #17233c;
+  font: inherit;
+}
+.shared-ticket-form button {
+  height: 40px;
+  padding: 0 14px;
+  border: 0;
+  border-radius: 8px;
+  background: #5946d2;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+.shared-ticket-form button:disabled { opacity: .6; cursor: wait; }
+.ticket-summary { margin-top: 10px; color: #59667d; font-size: 12px; }
+.ticket-summary summary { color: #4b3cb2; font-weight: 700; cursor: pointer; }
+.ticket-summary p { margin: 8px 0 3px; }
+.ticket-summary span { color: #8791a5; }
+.ticket-error { margin: 8px 0 0; color: #b42318; font-size: 12px; }
+
+.agent-tabs {
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  border: 1px solid #e6e9f0;
+  border-radius: 14px 14px 0 0;
+  background: #fff;
+}
+
+.agent-tab {
+  min-height: 46px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 18px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  background: transparent;
+  color: #66728a;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.agent-tab.active { border-color: #e4dfff; background: #f3f1ff; color: #4b3cb2; }
+.tab-number { color: #9aa3b5; font-size: 11px; font-weight: 700; }
+
+.agent-window {
+  height: min(72vh, 790px);
+  min-height: 540px;
+  overflow: hidden;
+  border: 1px solid #e6e9f0;
+  border-top: 0;
+  border-radius: 0 0 14px 14px;
+  background: #fff;
+}
+
+.agent-frame { width: 100%; height: 100%; border: 0; background: #fff; }
+
+.workspace-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 2px 0;
+  color: #8791a5;
+  font-size: 11px;
+}
+
+@media (max-width: 650px) {
+  .workspace { width: calc(100% - 24px); padding-top: 10px; }
+  .workspace-intro { padding-top: 18px; }
+  .shared-ticket-form { flex-wrap: wrap; }
+  .shared-ticket-form label { width: 100%; }
+  .shared-ticket-form input { flex: 1; width: auto; }
+  .agent-tabs { gap: 4px; padding: 5px; }
+  .agent-tab { flex: 1; justify-content: center; gap: 6px; padding: 0 5px; font-size: 12px; }
+  .tab-number { display: none; }
+  .agent-window { min-height: 470px; height: 70vh; }
+  .workspace-footer { flex-direction: column; gap: 4px; }
+}

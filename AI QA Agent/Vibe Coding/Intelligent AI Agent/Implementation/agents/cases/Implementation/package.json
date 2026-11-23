@@ -1,0 +1,30 @@
+{
+  "name": "jira-test-case-generator",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently -k \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev:backend": "node backend/server.mjs",
+    "dev:frontend": "vite --host 127.0.0.1 --port 5183 --strictPort",
+    "build": "vite build",
+    "test": "node --test",
+    "sample:excel": "node backend/generate-sample.mjs",
+    "start": "node backend/server.mjs"
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "latest",
+    "dotenv": "latest",
+    "exceljs": "^4.4.0",
+    "express": "latest",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "vite": "latest",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "concurrently": "latest"
+  },
+  "overrides": {
+    "uuid": "^11.1.1"
+  }
+}
